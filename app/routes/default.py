@@ -7,5 +7,5 @@ def index():
     return render_template('index.html')
 
 @app.route('/aboutus')
-def index():
+def aboutus():
     return render_template('aboutus.html')
