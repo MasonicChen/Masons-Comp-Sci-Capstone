@@ -32,11 +32,22 @@ class User(UserMixin, Document):
     image = FileField()
     prononuns = StringField()
     role = StringField()
-    
 
     meta = {
         'ordering': ['lname','fname']
     }
+    
+class Farm(Document):
+    zipCode = StringField()
+    streetAddress = StringField()
+    city = StringField()
+    state = StringField()
+    type = StringField()
+    picture = FileField()
+    price = StringField()
+    name = StringField()
+    
+    
     
 class Blog(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
