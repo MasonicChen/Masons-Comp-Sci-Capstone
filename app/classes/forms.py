@@ -17,7 +17,7 @@ class ProfileForm(FlaskForm):
 
 class FarmForm(FlaskForm):
     zipCode = StringField()
-    streetAddress = StringField()
+    streetAddress = StringField("Street Address")
     city = StringField()
     state = StringField()
     type = SelectField("Type", choices=[("Farmer's Market","Farmer's Market"), ("Animal Farm","Animal Farm"), ("Grocery Store","Grocery Store"), ("Vegetable Farm", "Vegetable Farm"), ("Food Bank", "Food Bank")])

@@ -38,7 +38,7 @@ class User(UserMixin, Document):
     }
     
 class Farm(Document):
-    zipCode = StringField()
+    zip = StringField()
     streetAddress = StringField()
     city = StringField()
     state = StringField()
@@ -46,7 +46,8 @@ class Farm(Document):
     picture = FileField()
     price = StringField()
     name = StringField()
-    
+    modify_date = DateTimeField()
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
     
     
 class Blog(Document):

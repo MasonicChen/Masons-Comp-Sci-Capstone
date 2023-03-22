@@ -59,8 +59,8 @@ def updateLatLon(clinic):
     # Find the lat/lon in the response
     try:
         r = r.json()
-    except:
-        flash("unable to retrieve lat/lon")
+    except Exception as error:
+        flash(f"unable to retrieve lat/lon: {error}")
         return(clinic)
     else:
         if len(r) != 0:
@@ -83,14 +83,16 @@ def clinicNew():
     if form.validate_on_submit():
 
         newClinic = Clinic(
-            name = form.name.data,
-            streetAddress = form.streetAddress.data,
+            address = form.streetAddress.data,
+            zip = form.zipCode.data,
             city = form.city.data,
             state = form.state.data,
-            zipcode = form.zipcode.data,
-            description = form.description.data,
+            type = form.type.data, 
+            picture = form.picture.data,
+            name = form.name.data, 
             author = current_user.id,
-            modifydate = dt.datetime.utcnow,
+            # This sets the modifydate to the current datetime.
+            modify_date = dt.datetime.utcnow  
         )
         newClinic.save()
 

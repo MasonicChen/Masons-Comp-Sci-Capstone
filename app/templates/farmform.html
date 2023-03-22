@@ -4,7 +4,7 @@ copy this one and then edit it. -->
 {% extends "base.html" %}
 
 {% block body %}
-        <h1>Form Page Title</h1>
+        <h1>Add a New Location!</h1>
 
         <!--List all errors in a group at the top-->
         {% for field in form.errors %}
@@ -20,7 +20,34 @@ copy this one and then edit it. -->
             
             {{ form.name.label }} <br>
             {{ form.name(size=64) }}
-
+            <p>
+            {{ form.price.label }} <br>
+            {{ form.price() }}
+        </p>
+            <p>
+            {{ form.type.label }} <br>
+            {{ form.type() }}
+        </p>
+            <p>
+            {{ form.state.label }} <br>
+            {{ form.state(size=64) }}
+        </p>
+            <p>
+            {{ form.zipCode.label }} <br>
+            {{ form.zipCode(size=64) }}
+        </p>
+            <p>
+            {{ form.city.label }} <br>
+            {{ form.city(size=64) }}
+        </p>
+            <p>
+            {{ form.streetAddress.label }} <br>
+            {{ form.streetAddress(size=64) }}
+        </p>
+            <!-- <p>
+            {{ form.picture.label }} <br>
+            {{ form.picture(size=64) }}
+        </p> -->
             {{form.submit()}}
         </form>
         

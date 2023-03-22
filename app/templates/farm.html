@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+    {% block body %}
+    
+    {% if farm %}
+    
+    by {{farm.author.username}} 
+    {% if farm.modifydate %}
+        modified {{moment(farm.modifydate).calendar()}}
+    {% endif %}
+    <br>
+        {% if farm.author == current_user %}
+            <a data-toggle="tooltip" data-placement="top" title="Delete Farm" href="/farm/delete/{{farm.id}}">
+                <img width="40" class="bottom-image" src="/static/delete.png">
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Edit Farm" href="/farm/edit/{{farm.id}}">
+                <img width="40" class="bottom-image" src="/static/edit.png">
+            </a>
+        {% endif %}
+    
+        <h1 class="display-5">Name:  {{farm.name}}</h1>
+        <p class="fs-3 text-break">
+                {{farm.content}}
+        </p>
+        <p class="fs-3 text-break">
+            {% if farm.author.image %}
+                <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(farm.author.image.read())}}">
+            {% endif %}
+                {{farm.content}}
+        </p>
+        <h1 class="display-5">
+            {{farm.streetAddress}} <br>
+            {{farm.city}} {{farm.state}} {{farm.zipcode}}
+        </h1>
+        <p class="fs-3 text-break"> 
+                {{farm.content}}
+        </p>
+        <h1 class="display-5">Description: {{farm.description}}</h1>
+        <p class="fs-3 text-break">
+                {{farm.content}}
+        </p>
+        
+    {% else %}
+        <h1 class="display-5">No Farm</h1>
+    {% endif %}
+    
+    {% endblock %}
