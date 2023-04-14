@@ -42,11 +42,13 @@ class Farm(Document):
     streetAddress = StringField()
     city = StringField()
     state = StringField()
-    type = StringField()
+    farmType = StringField()
     picture = FileField()
     price = StringField()
     name = StringField()
     modify_date = DateTimeField()
+    lat = FloatField()
+    lon = FloatField()
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
     
     

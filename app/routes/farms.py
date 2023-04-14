@@ -29,7 +29,7 @@ def updateLatLon(farm):
                 lat = float(r[0]['lat']),
                 lon = float(r[0]['lon'])
             )
-            flash(f"clinic lat/lon updated")
+            flash(f"farm lat/lon updated")
             return(farm)
         else:
             flash('unable to retrieve lat/lon')
@@ -46,7 +46,7 @@ def farmNew():
             zip = form.zipCode.data,
             city = form.city.data,
             state = form.state.data,
-            type = form.type.data, 
+            farmType = form.farmType.data, 
             price = form.price.data, 
             name = form.name.data, 
             author = current_user.id,
@@ -71,27 +71,25 @@ def farmEdit(farmId):
             zip = form.zipCode.data,
             city = form.city.data,
             state = form.state.data,
-            type = form.type.data, 
+            farmType = form.farmType.data, 
             price = form.price.data, 
             name = form.name.data, 
-            author = current_user.id,
-            # This sets the modifydate to the current datetime.
             modify_date = dt.datetime.utcnow
             )
+        thisFarm = updateLatLon(thisFarm) 
         # This is a method that saves the data to the mongoDB database.
         thisFarm.save()
         return redirect(url_for('farm',farmId=thisFarm.id))
+    return render_template('farmform.html',form=form)
     
-    form.streetAddress.data = thisFarm.streetAddress,
-    form.zipCode.data = thisFarm.zip,
-    form.city.data = thisFarm.city,
-    form.state.data = thisFarm.state,
-    form.type.data = thisFarm.type, 
-    form.price.data =thisFarm.price, 
-    form.name.data = thisFarm.name, 
-    current_user.id = thisFarm.author,
+    form.streetAddress.data = thisFarm.streetAddress
+    form.zipCode.data = thisFarm.zip
+    form.city.data = thisFarm.city
+    form.state.data = thisFarm.state
+    form.farmType.data = thisFarm.farmType
+    form.price.data =thisFarm.price
+    form.name.data = thisFarm.name
     
-    editFarm = updateLatLon(editFarm)
     return render_template('farmform.html',form=form)
 
 @app.route('/farm/<farmId>')

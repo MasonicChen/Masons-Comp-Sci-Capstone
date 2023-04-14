@@ -20,7 +20,7 @@ class FarmForm(FlaskForm):
     streetAddress = StringField("Street Address")
     city = StringField()
     state = StringField()
-    type = SelectField("Type", choices=[("Farmer's Market","Farmer's Market"), ("Animal Farm","Animal Farm"), ("Grocery Store","Grocery Store"), ("Vegetable Farm", "Vegetable Farm"), ("Food Bank", "Food Bank")])
+    farmType = SelectField("Type", choices=[("Farmer's Market","Farmer's Market"), ("Animal Farm","Animal Farm"), ("Grocery Store","Grocery Store"), ("Vegetable Farm", "Vegetable Farm"), ("Food Bank", "Food Bank")])
     picture = FileField()
     price = SelectField("Price", choices=[("Free", "Free"), ("$","$"), ("$$", "$$"), ("$$$", "$$$")])
     name = StringField()
