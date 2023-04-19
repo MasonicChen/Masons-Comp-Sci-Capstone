@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 
 {% block body %}
-        <h1></h1>
+        <h1>Rate our Website!</h1>
+        <h3>Let us know what we can fix to make your experience better!</h3>
 
         <form method=post>
             {{ form.hidden_tag() }}
             <p>
                 {{ form.subject.label }} <br>
-                {{ form.subject(size=64) }}
+                {{ form.subject()}}
                 <!--List the errors for this field-->
                 {% for error in form.subject.errors %}
                     <span style="color: red;">[{{ error }}]</span>
@@ -21,14 +22,6 @@
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-            <!-- <p>
-                {{ form.tag.label }} <br>
-                {{ form.tag(size=64) }}
-                <!--List the errors for this field-->
-                {% for error in form.subject.errors %}
-                    <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p> -->
             <p>
                 {{form.submit()}}
             </p>
