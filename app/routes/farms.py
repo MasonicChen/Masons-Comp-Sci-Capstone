@@ -80,7 +80,6 @@ def farmEdit(farmId):
         # This is a method that saves the data to the mongoDB database.
         thisFarm.save()
         return redirect(url_for('farm',farmId=thisFarm.id))
-    return render_template('farmform.html',form=form)
     
     form.streetAddress.data = thisFarm.streetAddress
     form.zipCode.data = thisFarm.zip
