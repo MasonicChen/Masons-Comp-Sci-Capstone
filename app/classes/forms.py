@@ -27,7 +27,7 @@ class FarmForm(FlaskForm):
     submit = SubmitField('Cultivate')
 
 class BlogForm(FlaskForm):
-    subject = SelectField("Rating", choices=[("☆", "☆"), ("☆☆","☆☆"), ("☆☆☆", "☆☆☆"), ("☆☆☆☆", "☆☆☆☆"), ("☆☆☆☆☆", "☆☆☆☆☆")])
+    subject = SelectField("Rating", choices=[("☆☆☆☆☆","☆☆☆☆☆"), ("★☆☆☆☆", "★☆☆☆☆"), ("★★☆☆☆","★★☆☆☆"), ("★★★☆☆", "★★★☆☆"), ("★★★★☆", "★★★★☆"), ("★★★★★", "★★★★★")])
     content = TextAreaField('Reasoning', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
