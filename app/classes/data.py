@@ -49,6 +49,7 @@ class Farm(Document):
     modify_date = DateTimeField()
     lat = FloatField()
     lon = FloatField()
+    fav = BooleanField()
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
     
     

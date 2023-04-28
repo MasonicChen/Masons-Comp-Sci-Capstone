@@ -9,6 +9,9 @@
     <div class="col">
         <a href="/farm/new" class="btn btn-primary btn-sm mt-5" role="button">New Farm</a>
     </div>
+    <div class="col">
+        <a href="/farm/favs">Favorites</a>
+    </div>
 </div>
 
 {% if farms %}
@@ -25,6 +28,14 @@
                 <a href="/farm/edit/{{farm.id}}">
                     <img width="25" class="bottom-image" src="/static/edit.png">
                 </a>
+                <a href="/farm/fav/{{farm.id}}">
+                    {% if farm.fav %}
+                        <img width="35" class="bottom-image" src="/static/filledstar.png">
+                    {% else %}
+                        <img width="25" class="bottom-image" src="/static/unfilledstar.png">
+                    {% endif %}                       
+                </a>
+
             </div>
             <div class="col-2 border">
                 {% if loop.index == 1 %}
@@ -52,7 +63,8 @@
                 {% if loop.index == 1 %}
                     <h3 class="display-0.5">lat/lon</h3>
                 {% endif %}
-                {{farm.lat}}/{{farm.lon}}
+                {{farm.lat}}/
+                {{farm.lon}}
             </div>
         </div>
     {% endfor %}

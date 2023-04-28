@@ -35,6 +35,21 @@ def updateLatLon(farm):
             flash('unable to retrieve lat/lon')
             return(farm)
 
+@app.route("/farm/fav/<farmId>")
+@login_required
+def farmFav(farmId):
+    thisFarm=Farm.objects.get(id=farmId)
+    if thisFarm.fav:
+        thisFarm.update(fav=False)
+    else:
+        thisFarm.update(fav=True)
+    return redirect(url_for('farmList'))
+
+@app.route("/farm/favs")
+@login_required
+def farmFavs():
+    farms=Farm.objects(fav=True)
+    return render_template("farmlist.html",farms=farms)
 
 @app.route('/farm/new', methods=['GET', 'POST'])
 @login_required
